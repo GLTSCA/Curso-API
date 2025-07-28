@@ -1,27 +1,21 @@
-const http = require('http'); //pacote que vem instalado com o node
-const path = require('path');
-const url = require('url'); //pacote que vem instalado com o node
+const express = require("express"); // Importing express
+const { apiSomar, apiSubtrair, apiMultiplicar, apiDividir } = require('./api/operacoes')
 
-http.createServer((req, res) => {
-
-    const parsedUrl = url.parse(req.url, true); //Analisa a URL da requisição
-    const pathName = parsedUrl.pathname; //Extrai o caminho da URL
-    const queryParams = parsedUrl.query; //Extrai os parâmetros de consulta da URL
- 
-
-    if(pathName === '/favicon.ico') { //Verifica se o caminho é o favicon
-        res.writeHead(404); //Retorna um código de status 404 (Not Found)
-        res.end(); //Finaliza a resposta
-        return; //Interrompe a execução da função
-    }
-
-    console.log(queryParams); //Exibe os parâmetros de consulta no console
-
-    if(req.method === 'GET') { //Verifica se o método é GET
-        res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'}); //Define o cabeçalho da resposta
-        res.write('A soma e:' + (Number(queryParams.num) + Number(queryParams.num2))) ; //Escreve a resposta
-        res.end(); //Finaliza a resposta
-    }
+const app = express(); // Creating an instance of express
+const porta = 3000; // Defining the port number
+app.use(express.json()); // Middleware to parse JSON bodies
 
 
-}).listen(9090); //Porta que o servidor vai escutar
+
+
+app.post("/somar", apiSomar);
+
+app.post("/subtrair", apiSubtrair);
+
+app.post("/multiplicar", apiMultiplicar);
+
+app.post("/dividir", apiDividir);
+
+app.listen(porta, () => {
+  console.log("Server is running on port " + porta); // Logging when the server starts
+}); // Listening on port 3000

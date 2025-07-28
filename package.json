@@ -1,0 +1,22 @@
+{
+  "name": "curso-api",
+  "version": "1.0.0",
+  "description": "Minha primeira API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GLTSCA/Curso-API.git"
+  },
+  "author": "Gabriel Tavares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GLTSCA/Curso-API/issues"
+  },
+  "homepage": "https://github.com/GLTSCA/Curso-API#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
